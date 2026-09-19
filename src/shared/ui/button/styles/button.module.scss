@@ -1,0 +1,138 @@
+.button {
+  position: relative;
+
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+
+  text-align: center;
+  white-space: nowrap;
+
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+
+  @include focus-ring;
+}
+
+.button--full-width {
+  inline-size: 100%;
+}
+
+.button:disabled,
+.button[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+/* ─────────── Sizes ─────────── */
+
+.button--m {
+  min-block-size: 44px;
+  padding: var(--space-3) var(--space-5);
+
+  @include body-16-medium;
+}
+
+.button--s {
+  min-block-size: 36px;
+  padding: var(--space-2) var(--space-4);
+
+  @include body-14-medium;
+}
+
+/* ─────────── Variants ─────────── */
+
+.button--primary {
+  color: var(--color-text-inverse);
+  background-color: var(--color-accent);
+
+  &:not(:disabled, [aria-disabled='true']):hover {
+    background-color: var(--color-accent-hover);
+  }
+
+  &:not(:disabled, [aria-disabled='true']):active {
+    background-color: var(--color-accent-active);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-disabled-text);
+    background-color: var(--color-disabled-bg);
+  }
+}
+
+.button--secondary {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+
+  &:not(:disabled, [aria-disabled='true']):hover {
+    background-color: var(--color-surface-muted);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    border-color: var(--color-border);
+    color: var(--color-disabled-text);
+  }
+}
+
+.button--ghost {
+  color: var(--color-text-accent);
+  background-color: transparent;
+
+  &:not(:disabled, [aria-disabled='true']):hover {
+    background-color: var(--color-accent-soft);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-disabled-text);
+  }
+}
+
+.button--danger {
+  color: var(--color-text-inverse);
+  background-color: var(--color-danger);
+
+  &:not(:disabled, [aria-disabled='true']):hover {
+    background-color: var(--color-danger-hover);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    color: var(--color-disabled-text);
+    background-color: var(--color-disabled-bg);
+  }
+}
+
+/* ─────────── Loading ─────────── */
+
+.button--loading .button__content {
+  visibility: hidden;
+}
+
+.button__spinner {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  translate: -50% -50%;
+}
+
+.button__content {
+  display: inline-flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.button__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}

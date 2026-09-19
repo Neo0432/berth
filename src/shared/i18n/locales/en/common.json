@@ -1,0 +1,25 @@
+{
+  "app": {
+    "name": "Berth",
+    "tagline": "Build a team for your pet project"
+  },
+  "actions": {
+    "apply": "Apply",
+    "cancel": "Cancel",
+    "save": "Save",
+    "retry": "Try again",
+    "goHome": "Go to home"
+  },
+  "states": {
+    "loading": "Loading…",
+    "empty": "Nothing here yet",
+    "error": {
+      "title": "Something went wrong",
+      "description": "The page crashed. Reloading usually helps."
+    },
+    "notFound": {
+      "title": "Page not found",
+      "description": "The link is broken or the page has been removed."
+    }
+  }
+}

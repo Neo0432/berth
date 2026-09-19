@@ -1,0 +1,32 @@
+@use '../abstracts' as *;
+
+body {
+  min-height: 100dvh;
+
+  font-family: var(--font-family-base);
+  font-synthesis: none;
+  color: var(--color-text);
+  text-rendering: optimizelegibility;
+
+  background-color: var(--color-bg);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @include body-16;
+}
+
+#root {
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+:where(a, button, input, textarea, select, [tabindex]) {
+  @include focus-ring;
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}

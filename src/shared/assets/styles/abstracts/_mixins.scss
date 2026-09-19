@@ -1,0 +1,59 @@
+/// :focus-visible with a fallback for browsers that do not support it.
+@mixin focus-ring {
+  &:focus-visible {
+    box-shadow: var(--focus-ring);
+  }
+
+  @supports not selector(:focus-visible) {
+    &:focus {
+      box-shadow: var(--focus-ring);
+    }
+  }
+}
+
+/// Hide visually while keeping it available to screen readers (WCAG, NFR-5).
+@mixin visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(50%);
+}
+
+/// Truncate text after N lines with an ellipsis.
+@mixin line-clamp($lines: 1) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $lines;
+  line-clamp: $lines;
+
+  overflow-wrap: break-word;
+}
+
+/// Drop animation for anyone who asked for less motion.
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes skeleton-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}

@@ -1,0 +1,6 @@
+dist
+coverage
+storybook-static
+node_modules
+yarn.lock
+src/shared/assets/icons/components

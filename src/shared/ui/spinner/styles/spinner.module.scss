@@ -1,0 +1,24 @@
+.spinner {
+  display: inline-block;
+  flex-shrink: 0;
+
+  inline-size: var(--spinner-size);
+  block-size: var(--spinner-size);
+  border: 2px solid currentcolor;
+  border-block-start-color: transparent;
+  border-radius: 50%;
+
+  animation: spin 700ms linear infinite;
+}
+
+.spinner--s {
+  --spinner-size: 16px;
+}
+
+.spinner--m {
+  --spinner-size: 20px;
+}
+
+.spinner--l {
+  --spinner-size: 28px;
+}

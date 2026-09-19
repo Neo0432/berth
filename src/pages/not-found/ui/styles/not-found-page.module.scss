@@ -1,0 +1,21 @@
+.not-found {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-12) var(--layout-gutter);
+
+  text-align: center;
+}
+
+.not-found__title {
+  @include heading-24;
+}
+
+.not-found__description {
+  max-inline-size: 42ch;
+  color: var(--color-text-secondary);
+}

@@ -12,16 +12,16 @@
 }
 
 .home__title {
-  @include heading-32;
+  @include heading-32-40-bold-normal;
 
-  @include from('tablet') {
-    @include heading-40;
+  @include media-query-min('tablet') {
+    @include heading-40-48-medium-normal;
   }
 }
 
 .home__tagline {
   max-inline-size: 52ch;
-  color: var(--color-text-secondary);
+  color: var(--color-grayscale-50);
 }
 
 .home__actions {

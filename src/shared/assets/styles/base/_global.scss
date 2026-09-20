@@ -1,19 +1,19 @@
-@use '../abstracts' as *;
+@use '../mixins/mixins' as *;
 
 body {
   min-height: 100dvh;
 
   font-family: var(--font-family-base);
   font-synthesis: none;
-  color: var(--color-text);
+  color: var(--color-grayscale-100);
   text-rendering: optimizelegibility;
 
-  background-color: var(--color-bg);
+  background-color: var(--color-grayscale-10);
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  @include body-16;
+  @include body-16-24-regular-normal;
 }
 
 #root {
@@ -24,7 +24,9 @@ body {
 }
 
 :where(a, button, input, textarea, select, [tabindex]) {
-  @include focus-ring;
+  @include focus-visible {
+    box-shadow: var(--focus-main);
+  }
 }
 
 .visually-hidden {

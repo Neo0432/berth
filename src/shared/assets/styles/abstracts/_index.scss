@@ -1,7 +1,0 @@
-// Public API of the style abstracts.
-// This file is injected into every scss file automatically (see vite.config.ts),
-// so it must contain NOT A SINGLE rule that emits CSS — otherwise the output
-// would be duplicated in every module.
-@forward './breakpoints';
-@forward './typography';
-@forward './mixins';

@@ -12,10 +12,10 @@
 }
 
 .not-found__title {
-  @include heading-24;
+  @include heading-24-32-bold-normal;
 }
 
 .not-found__description {
   max-inline-size: 42ch;
-  color: var(--color-text-secondary);
+  color: var(--color-grayscale-50);
 }

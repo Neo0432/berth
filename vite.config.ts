@@ -33,10 +33,10 @@ export default defineConfig({
       scss: {
         /**
          * Inject mixins/functions into every scss file except the style
-         * abstracts themselves — a repeated `@use ... as *` makes Sass throw.
+         * helpers themselves — a repeated `@use ... as *` makes Sass throw.
          */
         additionalData: (source: string, filename: string) =>
-          filename.startsWith(STYLES_ROOT) ? source : `@use '@shared/assets/styles/abstracts' as *;\n${source}`,
+          filename.startsWith(STYLES_ROOT) ? source : `@use '@shared/assets/styles/mixins/mixins' as *;\n${source}`,
       },
     },
   },

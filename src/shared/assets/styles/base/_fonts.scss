@@ -1,0 +1,46 @@
+@use 'sass:string';
+@use 'sass:list';
+
+// Montserrat, upright only — no italics are used anywhere yet.
+// Adding a weight = drop the three files in and add one line to the map.
+// Browsers only download a weight once something on the page asks for it,
+// so an unused entry here costs nothing at runtime.
+$montserrat-fonts: (
+  '900 normal': 'Montserrat-Black',
+  '800 normal': 'Montserrat-ExtraBold',
+  '700 normal': 'Montserrat-Bold',
+  '600 normal': 'Montserrat-SemiBold',
+  '500 normal': 'Montserrat-Medium',
+  '400 normal': 'Montserrat-Regular',
+  '300 normal': 'Montserrat-Light',
+  '200 normal': 'Montserrat-ExtraLight',
+  '100 normal': 'Montserrat-Thin',
+);
+
+// A single family name, with no fallback list: inside @font-face a comma-separated
+// list is invalid and the browser throws the whole declaration away. The fallback
+// stack belongs in --font-family-base (see _variables.scss).
+$montserrat-family: 'Montserrat';
+$montserrat-path: '@shared/assets/fonts/montserrat';
+
+@each $settings, $file in $montserrat-fonts {
+  $array-of-settings: string.split($settings, ' ');
+  $weight: string.unquote(list.nth($array-of-settings, 1));
+  $style: string.unquote(list.nth($array-of-settings, 2));
+
+  @font-face {
+    font-family: $montserrat-family;
+    font-weight: $weight;
+    font-style: $style;
+
+    font-display: swap;
+
+    // Order matters: the browser takes the first format it understands.
+    // The keyword for .ttf is `truetype` — `ttf` is not a valid format() value
+    // and makes the browser skip that source entirely.
+    src:
+      url('#{$montserrat-path}/#{$file}.woff2') format('woff2'),
+      url('#{$montserrat-path}/#{$file}.woff') format('woff'),
+      url('#{$montserrat-path}/#{$file}.ttf') format('truetype');
+  }
+}

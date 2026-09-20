@@ -17,7 +17,9 @@
     border-color var(--transition-fast),
     color var(--transition-fast);
 
-  @include focus-ring;
+  @include focus-visible {
+    box-shadow: var(--focus-main);
+  }
 }
 
 .button--full-width {
@@ -35,79 +37,79 @@
   min-block-size: 44px;
   padding: var(--space-3) var(--space-5);
 
-  @include body-16-medium;
+  @include body-16-24-medium-normal;
 }
 
 .button--s {
   min-block-size: 36px;
   padding: var(--space-2) var(--space-4);
 
-  @include body-14-medium;
+  @include body-14-20-medium-normal;
 }
 
 /* ─────────── Variants ─────────── */
 
 .button--primary {
-  color: var(--color-text-inverse);
-  background-color: var(--color-accent);
+  color: var(--color-grayscale-0);
+  background-color: var(--color-primary-60);
 
   &:not(:disabled, [aria-disabled='true']):hover {
-    background-color: var(--color-accent-hover);
+    background-color: var(--color-primary-50);
   }
 
   &:not(:disabled, [aria-disabled='true']):active {
-    background-color: var(--color-accent-active);
+    background-color: var(--color-primary-70);
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-disabled-text);
-    background-color: var(--color-disabled-bg);
+    color: var(--color-grayscale-30);
+    background-color: var(--color-grayscale-20);
   }
 }
 
 .button--secondary {
-  border-color: var(--color-border-strong);
-  color: var(--color-text);
-  background-color: var(--color-surface);
+  border-color: var(--color-grayscale-30);
+  color: var(--color-grayscale-100);
+  background-color: var(--color-grayscale-0);
 
   &:not(:disabled, [aria-disabled='true']):hover {
-    background-color: var(--color-surface-muted);
+    background-color: var(--color-grayscale-20);
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    border-color: var(--color-border);
-    color: var(--color-disabled-text);
+    border-color: var(--color-grayscale-20);
+    color: var(--color-grayscale-30);
   }
 }
 
 .button--ghost {
-  color: var(--color-text-accent);
+  color: var(--color-primary-70);
   background-color: transparent;
 
   &:not(:disabled, [aria-disabled='true']):hover {
-    background-color: var(--color-accent-soft);
+    background-color: var(--color-primary-20);
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-disabled-text);
+    color: var(--color-grayscale-30);
   }
 }
 
 .button--danger {
-  color: var(--color-text-inverse);
-  background-color: var(--color-danger);
+  color: var(--color-grayscale-0);
+  background-color: var(--color-system-error-50);
 
   &:not(:disabled, [aria-disabled='true']):hover {
-    background-color: var(--color-danger-hover);
+    background-color: var(--color-system-error-100);
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--color-disabled-text);
-    background-color: var(--color-disabled-bg);
+    color: var(--color-grayscale-30);
+    background-color: var(--color-grayscale-20);
   }
 }
 

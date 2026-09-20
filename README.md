@@ -167,15 +167,6 @@ Source SVGs live in `shared/assets/icons/svg/`. React components are **generated
 - **Routes go through `ROUTES` and `routeTo()`.** No route string literals in components.
 - **UI strings go through `t()`.** Hardcoded copy makes a second locale expensive.
 
-### Design tokens
-
-Tokens are defined in two tiers in `shared/assets/styles/base/_variables.scss`:
-
-1. **Palette** — raw values. Never referenced by components.
-2. **Semantics** — what components actually use (`--color-accent`, `--color-text`).
-
-Changing the theme means rewriting the second tier. Components stay untouched.
-
 ---
 
 ## Environment

@@ -1,0 +1,21 @@
+.error-page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-8) var(--layout-gutter);
+
+  text-align: center;
+}
+
+.error-page__title {
+  @include heading-24-32-bold-normal;
+}
+
+.error-page__description {
+  max-inline-size: 42ch;
+  color: var(--color-grayscale-50);
+}

@@ -1,6 +1,4 @@
-import '@testing-library/jest-dom/vitest';
-
-import { afterAll, afterEach, beforeAll, vi } from 'vitest';
+import '@testing-library/jest-dom';
 
 import { server } from './msw/server';
 
@@ -11,7 +9,7 @@ beforeAll(() => {
 
 afterEach(() => {
   server.resetHandlers();
-  vi.clearAllMocks();
+  jest.clearAllMocks();
 });
 
 afterAll(() => {
@@ -25,8 +23,8 @@ Object.defineProperty(window, 'matchMedia', {
     matches: false,
     media: query,
     onchange: null,
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
   }),
 });

@@ -1,21 +1,19 @@
-import { describe, expect, it, vi } from 'vitest';
-
 import { renderWithProviders, screen } from '@shared/test';
 
 import { Button } from './button';
 
 describe('Button', () => {
   it('вызывает onClick по нажатию', async () => {
-    const onClick = vi.fn();
+    const onClick = jest.fn();
     const { user } = renderWithProviders(<Button onClick={onClick}>Apply</Button>);
 
     await user.click(screen.getByRole('button', { name: 'Apply' }));
 
-    expect(onClick).toHaveBeenCalledOnce();
+    expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   it('блокирует повторное нажатие во время загрузки', async () => {
-    const onClick = vi.fn();
+    const onClick = jest.fn();
     const { user } = renderWithProviders(
       <Button isLoading onClick={onClick}>
         Apply

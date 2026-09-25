@@ -1,6 +1,11 @@
 @use '../mixins/mixins' as *;
 
 body {
+  isolation: isolate;
+
+  display: flex;
+  flex-direction: column;
+
   min-height: 100dvh;
 
   font-family: var(--font-family-base);
@@ -14,13 +19,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   @include body-16-24-regular-normal;
-}
-
-#root {
-  isolation: isolate;
-  display: flex;
-  flex-direction: column;
-  min-height: 100dvh;
 }
 
 :where(a, button, input, textarea, select, [tabindex]) {

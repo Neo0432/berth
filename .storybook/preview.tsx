@@ -1,9 +1,16 @@
-import type { Preview } from '@storybook/react-vite';
-import { I18nextProvider } from 'react-i18next';
+import type { Preview } from '@storybook/nextjs-vite';
+import { NextIntlClientProvider } from 'next-intl';
 
-import { i18n } from '../src/shared/i18n';
+import { montserrat } from '../src/app/fonts';
+import common from '../src/shared/i18n/locales/en/common.json';
+import validation from '../src/shared/i18n/locales/en/validation.json';
+import { routing } from '../src/shared/i18n/routing';
 
 import '../src/app/styles/index.scss';
+
+// --font-family-base resolves var(--font-montserrat) on :root, so the class that
+// defines it has to sit on <html> as well — the same place the app puts it.
+document.documentElement.classList.add(montserrat.variable);
 
 const preview: Preview = {
   parameters: {
@@ -13,9 +20,9 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <I18nextProvider i18n={i18n}>
+      <NextIntlClientProvider locale={routing.defaultLocale} messages={{ common, validation }}>
         <Story />
-      </I18nextProvider>
+      </NextIntlClientProvider>
     ),
   ],
 };

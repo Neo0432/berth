@@ -1,0 +1,14 @@
+@use './breakpoints' as *;
+
+// Sass → TypeScript bridge, consumed only by breakpoints.ts. Kept out of
+// _breakpoints.scss on purpose: that file is forwarded into every stylesheet,
+// and a :export block there would be copied into every CSS module.
+:export {
+  @each $key, $value in $breakpoint-sizes {
+    min-#{$key}: $value;
+  }
+
+  @each $key, $value in $breakpoint-sizes {
+    max-#{$key}: $value - 0.02px;
+  }
+}

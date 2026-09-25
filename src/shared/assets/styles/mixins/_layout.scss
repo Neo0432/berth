@@ -1,4 +1,4 @@
-@use './breakpoints.module' as *;
+@use './breakpoints' as *;
 
 @mixin fields-group-multi($gap: 16px) {
   display: grid;

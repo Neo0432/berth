@@ -1,11 +1,11 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@shared/ui';
 
 import { getClasses } from './styles/get-classes';
 
 export const HomePage = () => {
-  const { t } = useTranslation();
+  const t = useTranslations('common');
   const { cnRoot, cnTitle, cnTagline, cnActions } = getClasses();
 
   return (

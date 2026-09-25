@@ -1,4 +1,4 @@
-import { QueryClient } from '@tanstack/react-query';
+import { isServer, QueryClient } from '@tanstack/react-query';
 
 import { isApiError } from './api-error';
 
@@ -28,3 +28,21 @@ export const createQueryClient = () =>
       },
     },
   });
+
+let browserQueryClient: QueryClient | undefined;
+
+/**
+ * On the server every request gets its own client: module scope there is shared
+ * by all users, so a singleton would serve one user's cached data to another.
+ * In the browser there is one user, and recreating the client would drop the
+ * cache whenever React suspends during the first render.
+ */
+export const getQueryClient = () => {
+  if (isServer) {
+    return createQueryClient();
+  }
+
+  browserQueryClient ??= createQueryClient();
+
+  return browserQueryClient;
+};

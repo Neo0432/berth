@@ -45,7 +45,7 @@
   --index-toast: 1200;
 
   // fonts
-  --font-family-base: 'Montserrat', -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
+  --font-family-base: var(--font-montserrat), -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, sans-serif;
   --font-family-mono: ui-monospace, sfmono-regular, 'SF Mono', menlo, monospace;
 
   // spacing

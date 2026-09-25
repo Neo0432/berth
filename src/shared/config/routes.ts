@@ -10,7 +10,6 @@ export const ROUTES = {
   profile: '/u/:username',
   signIn: '/sign-in',
   signUp: '/sign-up',
-  notFound: '*',
 } as const;
 
 type RouteKey = keyof typeof ROUTES;

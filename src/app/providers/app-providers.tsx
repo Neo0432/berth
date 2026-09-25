@@ -1,40 +1,36 @@
+'use client';
+
 import { lazy, type ReactNode, Suspense } from 'react';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { I18nextProvider } from 'react-i18next';
 
-import { createQueryClient } from '@shared/api';
-import { i18n } from '@shared/i18n';
+import { getQueryClient } from '@shared/api';
 
-import { AppErrorFallback } from './app-error-fallback';
-import { ErrorBoundary } from './error-boundary';
+import { MockServiceWorker } from './mock-service-worker';
 
 /**
- * The client is created once per application, outside the component body:
- * inside it would be recreated on every render and lose its cache.
- */
-const queryClient = createQueryClient();
-
-/**
- * Devtools exist in the dev build only. The ternary on `import.meta.env.DEV`
- * (inlined as `false` in production) makes the dynamic import unreachable,
+ * Devtools exist in the dev build only. The ternary on `process.env.NODE_ENV`
+ * (inlined as 'production' in the build) makes the dynamic import unreachable,
  * so the bundler strips it together with its dependencies.
  */
-const ReactQueryDevtools = import.meta.env.DEV
-  ? lazy(() => import('@tanstack/react-query-devtools').then((module) => ({ default: module.ReactQueryDevtools })))
-  : null;
+const ReactQueryDevtools =
+  process.env.NODE_ENV === 'development'
+    ? lazy(() => import('@tanstack/react-query-devtools').then((module) => ({ default: module.ReactQueryDevtools })))
+    : null;
 
-export const AppProviders = ({ children }: { children: ReactNode }) => (
-  <ErrorBoundary fallback={<AppErrorFallback />}>
-    <I18nextProvider i18n={i18n}>
-      <QueryClientProvider client={queryClient}>
-        {children}
+export const AppProviders = ({ children }: { children: ReactNode }) => {
+  // Called during render on purpose, as TanStack recommends for the App Router:
+  // useState would lose the client if React suspends during the first render.
+  const queryClient = getQueryClient();
 
-        {ReactQueryDevtools && (
-          <Suspense>
-            <ReactQueryDevtools buttonPosition="bottom-left" />
-          </Suspense>
-        )}
-      </QueryClientProvider>
-    </I18nextProvider>
-  </ErrorBoundary>
-);
+  return (
+    <QueryClientProvider client={queryClient}>
+      <MockServiceWorker>{children}</MockServiceWorker>
+
+      {ReactQueryDevtools && (
+        <Suspense>
+          <ReactQueryDevtools buttonPosition="bottom-left" />
+        </Suspense>
+      )}
+    </QueryClientProvider>
+  );
+};

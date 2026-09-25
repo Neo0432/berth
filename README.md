@@ -6,10 +6,10 @@
 
 [![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![TypeScript](https://img.shields.io/badge/TypeScript-6.0-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org)
-[![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite&logoColor=white)](https://vite.dev)
+[![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![TanStack Query](https://img.shields.io/badge/TanStack_Query-5-FF4154?logo=reactquery&logoColor=white)](https://tanstack.com/query)
 [![Sass](https://img.shields.io/badge/Sass-modules-CC6699?logo=sass&logoColor=white)](https://sass-lang.com)
-[![Vitest](https://img.shields.io/badge/Vitest-5-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev)
+[![Jest](https://img.shields.io/badge/Jest-30-C21325?logo=jest&logoColor=white)](https://jestjs.io)
 [![Storybook](https://img.shields.io/badge/Storybook-10-FF4785?logo=storybook&logoColor=white)](https://storybook.js.org)
 [![Architecture](https://img.shields.io/badge/architecture-Feature--Sliced_Design-2f7ae5)](https://feature-sliced.design)
 
@@ -37,15 +37,15 @@ something to show.
 
 | Layer            | Choice                         | Rationale                                                                  |
 | ---------------- | ------------------------------ | -------------------------------------------------------------------------- |
-| Build            | Vite + TypeScript              | Fast dev loop, one config for dev, test and production                     |
+| Framework        | Next.js 16 (App Router)        | Server rendering for public pages, file-based routing                      |
 | UI               | React 19                       | `ref` is a plain prop — no `forwardRef` ceremony                           |
 | Server state     | TanStack Query                 | Nearly all state here is server state; a global store would be dead weight |
 | Client state     | `useState` + URL search params | Feed filters belong in the address bar, not in a store                     |
-| Routing          | react-router (data router)     | Lazy routes out of the box                                                 |
+| Routing          | App Router + next-intl         | Locale-aware routes; the default locale keeps clean URLs                   |
 | Forms            | react-hook-form + zod          | Uncontrolled inputs, one schema for both validation and types              |
 | Styling          | SCSS modules + CSS variables   | Tokens live in `:root`; retheming does not touch components                |
-| i18n             | i18next                        | Strings live in dictionaries from day one                                  |
-| Testing          | Vitest + Testing Library + MSW | Test behaviour, not implementation; mock the network, not your modules     |
+| i18n             | next-intl                      | Works in server components; strings live in dictionaries from day one      |
+| Testing          | Jest + Testing Library + MSW   | Test behaviour, not implementation; mock the network, not your modules     |
 | Component review | Storybook                      | Shared components can be inspected in isolation                            |
 
 ---
@@ -62,7 +62,7 @@ yarn dev
 The dev server runs on [localhost:3000](http://localhost:3000). `.env.development` is
 committed and contains working defaults, so a fresh clone starts without any setup.
 
-With `VITE_ENABLE_API_MOCKS=true` the app boots against MSW handlers instead of a real
+With `NEXT_PUBLIC_ENABLE_API_MOCKS=true` the app boots against MSW handlers instead of a real
 backend.
 
 ---
@@ -73,14 +73,14 @@ backend.
 | ----------------------------- | -------------------------------------------------- |
 | `yarn dev`                    | Dev server on port 3000                            |
 | `yarn build`                  | Type check, then production build                  |
-| `yarn preview`                | Serve the production build locally                 |
+| `yarn start`                  | Serve the production build locally                 |
 | `yarn typecheck`              | TypeScript only, no emit                           |
 | `yarn lint`                   | ESLint over `src`                                  |
 | `yarn lint:fix`               | ESLint with autofix                                |
 | `yarn stylelint`              | Stylelint over CSS and SCSS                        |
 | `yarn stylelint:fix`          | Stylelint with autofix                             |
 | `yarn prettier:write`         | Format TypeScript sources                          |
-| `yarn test`                   | Vitest in watch mode                               |
+| `yarn test`                   | Run the Jest suite                                 |
 | `yarn test:coverage`          | Single run with a coverage report                  |
 | `yarn storybook`              | Storybook on port 6006                             |
 | `yarn build-storybook`        | Static Storybook build                             |
@@ -94,8 +94,11 @@ backend.
 The project follows [Feature-Sliced Design](https://feature-sliced.design).
 
 ```
+app/             Next.js routes — thin files that render FSD pages
+pages/           intentionally empty, see pages/README.md
+proxy.ts         locale detection and redirects (next-intl)
 src/
-├── app/         entry point, providers, router, global styles
+├── app/         providers, fonts, global styles
 ├── pages/       page compositions; pages never know about each other
 ├── widgets/     self-contained page blocks (header, feed, project card)
 ├── features/    user actions (apply to a slot, accept an application, close a cycle)
@@ -172,12 +175,14 @@ Source SVGs live in `shared/assets/icons/svg/`. React components are **generated
 ## Environment
 
 `.env.development` and `.env.test` are committed — they contain no secrets. A local
-`.env` is git-ignored.
+`.env` is git-ignored. There is no `.env.production` yet: `yarn build` prerenders pages
+and validates the environment while doing so, so it needs `NEXT_PUBLIC_API_BASE_URL`
+from the shell or the deploy environment.
 
-| Variable                | Meaning                                             |
-| ----------------------- | --------------------------------------------------- |
-| `VITE_API_BASE_URL`     | Base API URL, no trailing slash                     |
-| `VITE_ENABLE_API_MOCKS` | `true` starts MSW in the browser (development only) |
+| Variable                       | Meaning                                             |
+| ------------------------------ | --------------------------------------------------- |
+| `NEXT_PUBLIC_API_BASE_URL`     | Base API URL, no trailing slash                     |
+| `NEXT_PUBLIC_ENABLE_API_MOCKS` | `true` starts MSW in the browser (development only) |
 
 The schema is validated with zod in `shared/config/env.ts` at startup. A malformed `.env`
 crashes the app immediately with a readable message instead of surfacing half an hour

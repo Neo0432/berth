@@ -1,4 +1,4 @@
-import breakpoints from './_breakpoints.module.scss';
+import breakpoints from './breakpoints.module.scss';
 
 type BreakpointKeys =
   'mobile-s' | 'mobile-m' | 'mobile-l' | 'tablet' | 'laptop-s' | 'laptop-m' | 'laptop-l' | 'desktop';

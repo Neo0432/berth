@@ -1,0 +1,94 @@
+@use 'sass:map';
+
+$breakpoint-sizes: (
+  'mobile-s': 320px,
+  'mobile-m': 375px,
+  'mobile-l': 424px,
+  'mobile-xl': 475px,
+  'tablet': 768px,
+  'laptop-s': 1024px,
+  'laptop-m': 1200px,
+  'laptop-l': 1440px,
+  'desktop': 1920px,
+);
+
+@function get-breakpoint-max($name) {
+  $min: map.get($breakpoint-sizes, $name);
+
+  @if $min != 0 {
+    @return $min;
+  }
+
+  @return null;
+}
+
+@function get-breakpoint-min($name) {
+  $max: map.get($breakpoint-sizes, $name);
+
+  @if $max and $max > 0 {
+    @return $max - 0.02px;
+  }
+
+  @return null;
+}
+
+@mixin media-query-min($value) {
+  @if map.has-key($breakpoint-sizes, $value) {
+    $min: get-breakpoint-max($value);
+
+    @if $min {
+      @media screen and (min-width: $min) {
+        @content;
+      }
+    }
+  } @else {
+    @media screen and (min-width: $value) {
+      @content;
+    }
+  }
+}
+
+@mixin media-query-max($value) {
+  @if map.has-key($breakpoint-sizes, $value) {
+    $max: get-breakpoint-min($value);
+
+    @if $max {
+      @media screen and (max-width: $max) {
+        @content;
+      }
+    }
+  } @else {
+    @media screen and (max-width: $value) {
+      @content;
+    }
+  }
+}
+
+@mixin media-query-within($value-min, $value-max) {
+  $min: get-breakpoint-max($value-min);
+  $max: get-breakpoint-min($value-max);
+
+  @if $min and $max {
+    @media screen and (min-width: $min) and (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @media screen and (min-width: $value-min) and (max-width: $value-max) {
+      @content;
+    }
+  }
+}
+
+@mixin media-landscape-max($value) {
+  $max: get-breakpoint-max($value);
+
+  @if $max {
+    @media screen and (max-height: $max) and (orientation: landscape) {
+      @content;
+    }
+  } @else {
+    @media screen and (max-height: $value) and (orientation: landscape) {
+      @content;
+    }
+  }
+}

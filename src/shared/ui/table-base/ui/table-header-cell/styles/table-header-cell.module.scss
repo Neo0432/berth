@@ -1,0 +1,38 @@
+.table-header-cell {
+  @include body-17-25-regular-normal;
+
+  padding: 12px 16px;
+  border-block: 1px solid var(--color-grayscale-30);
+
+  color: var(--color-grayscale-100);
+  text-align: start;
+  overflow-wrap: anywhere;
+
+  background-color: var(--color-grayscale-20);
+
+  &:first-child {
+    border-inline-start: 1px solid var(--color-grayscale-30);
+    border-start-start-radius: 12px;
+    border-end-start-radius: 12px;
+  }
+
+  &:last-child {
+    border-inline-end: 1px solid var(--color-grayscale-30);
+    border-start-end-radius: 12px;
+    border-end-end-radius: 12px;
+  }
+
+  &--numeric {
+    text-align: end;
+  }
+
+  &--no-hyphens {
+    white-space: nowrap;
+  }
+
+  &--action {
+    position: sticky;
+    z-index: var(--index-sticky);
+    inset-inline-end: 0;
+  }
+}

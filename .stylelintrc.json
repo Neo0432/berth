@@ -4,16 +4,21 @@
     "color-no-hex": [
       true,
       {
-        "message": "Цвета живут в _variables.scss как CSS-переменные. Хардкод хекса — запрещён."
+        "message": "Raw colors only in _variables.scss as CSS-variables. Hex hardcode — prohibited."
       }
     ],
     "selector-class-pattern": [
       "^[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?$",
       {
-        "message": "Класс должен быть в BEM/kebab-case: block__element--modifier"
+        "message": "Class must be in BEM/kebab-case: block__element--modifier"
       }
     ],
-    "custom-property-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "custom-property-pattern": [
+      "^_?[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+      {
+        "message": "Custom property must be kebab-case: --public-name, or --_private-name for one used only inside its own file"
+      }
+    ],
     "scss/dollar-variable-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/at-mixin-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
     "scss/percent-placeholder-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",

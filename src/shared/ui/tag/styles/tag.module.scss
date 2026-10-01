@@ -1,0 +1,24 @@
+.tag {
+  @include body-14-20-regular-normal;
+
+  display: inline-flex;
+  align-items: center;
+
+  padding: 3px 7px;
+  border: 1px solid;
+  border-radius: 999px;
+
+  white-space: nowrap;
+
+  /* ─────────── Variants ─────────── */
+
+  &--primary {
+    border-color: var(--color-primary-30);
+    color: var(--color-primary-70);
+  }
+
+  &--secondary {
+    border-color: var(--color-grayscale-30);
+    color: var(--color-grayscale-50);
+  }
+}

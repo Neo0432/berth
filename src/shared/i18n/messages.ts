@@ -13,10 +13,11 @@ const loadNamespace = async <Namespace extends keyof Messages>(locale: Locale, n
  * Adding a namespace = a new JSON file plus one entry here.
  */
 export const loadMessages = async (locale: Locale): Promise<Messages> => {
-  const [common, validation] = await Promise.all([
+  const [common, validation, homeLanding] = await Promise.all([
     loadNamespace(locale, 'common'),
     loadNamespace(locale, 'validation'),
+    loadNamespace(locale, 'home-landing'),
   ]);
 
-  return { common, validation };
+  return { common, validation, 'home-landing': homeLanding };
 };

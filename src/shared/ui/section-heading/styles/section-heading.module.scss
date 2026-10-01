@@ -1,0 +1,21 @@
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.section-heading--center {
+  align-items: center;
+  text-align: center;
+}
+
+.section-heading--left {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.section-heading__title {
+  @include heading-36-44-semibold-normal;
+
+  color: var(--color-grayscale-100);
+}

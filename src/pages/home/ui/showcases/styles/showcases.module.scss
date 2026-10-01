@@ -1,0 +1,53 @@
+.showcases {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+  width: 100%;
+  max-width: 1156px;
+  margin-inline: auto;
+  padding: 25px 16px;
+
+  @include media-query-min('laptop-s') {
+    padding: 50px 16px;
+  }
+}
+
+.showcases__header {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+
+  @include media-query-min('tablet') {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.showcases__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.showcases__subtitle {
+  @include body-17-25-regular-normal;
+
+  color: var(--color-grayscale-50);
+}
+
+.showcases__view-all {
+  flex-shrink: 0;
+}
+
+.showcases__list {
+  display: grid;
+  gap: 24px;
+
+  @include media-query-min('tablet') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+}

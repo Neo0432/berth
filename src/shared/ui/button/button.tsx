@@ -5,7 +5,7 @@ import { Spinner } from '@shared/ui/spinner';
 
 import { getClasses } from './styles/get-classes';
 
-export const BUTTON_VARIANTS = ['primary', 'secondary', 'ghost', 'danger'] as const;
+export const BUTTON_VARIANTS = ['primary', 'outline', 'text'] as const;
 export const BUTTON_SIZES = ['m', 's'] as const;
 
 export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];
@@ -23,10 +23,6 @@ export interface ButtonOwnProps {
 
 export type ButtonProps<Element extends ElementType = 'button'> = PolymorphicProps<Element, ButtonOwnProps>;
 
-/**
- * One button with variants instead of four near-identical components.
- * Adding a style means adding a scss modifier, not copying a whole file.
- */
 export const Button = <Element extends ElementType = 'button'>({
   as,
   variant = 'primary',
@@ -43,7 +39,6 @@ export const Button = <Element extends ElementType = 'button'>({
   const Component = as ?? 'button';
   const isNativeButton = Component === 'button';
 
-  // <a> has no disabled attribute, so non-buttons get aria-disabled instead.
   const disabledProps = isNativeButton
     ? { disabled: isLoading || Boolean((rest as { disabled?: boolean }).disabled), type: 'button' as const }
     : { 'aria-disabled': isLoading || undefined };

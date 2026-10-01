@@ -1,15 +1,16 @@
 import type { FC, ReactNode } from 'react';
 import { getClasses } from './styles/get-classes';
+import { Header } from './ui/header/header';
 
 export interface LayoutBaseProps {
-  className?: string;
   children: ReactNode;
 }
 
-export const LayoutBase: FC<LayoutBaseProps> = ({ className, children }) => {
-  const { cnRoot } = getClasses({ className });
+export const LayoutBase: FC<LayoutBaseProps> = ({ children }) => {
+  const { cnRoot } = getClasses();
   return (
     <>
+      <Header />
       <main className={cnRoot}>{children}</main>
     </>
   );

@@ -1,0 +1,72 @@
+.problem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  padding: 25px 16px;
+
+  text-align: center;
+
+  @include media-query-min('laptop-s') {
+    padding: 50px 16px;
+  }
+}
+
+.problem__reviewers {
+  display: grid;
+  gap: 32px;
+
+  width: 100%;
+  max-width: 975px;
+  margin-block-start: 24px;
+
+  @include media-query-min('tablet') {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+}
+
+.problem__reviewer {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.problem__reviewer + .problem__reviewer::before {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-image: linear-gradient(90deg, transparent, var(--color-grayscale-100), transparent);
+
+  top: -16px;
+
+  @include media-query-min('tablet') {
+    inset-block: 0;
+    inset-inline-start: 0;
+
+    width: 1px;
+    height: 100%;
+    background-image: linear-gradient(transparent, var(--color-grayscale-100), transparent);
+  }
+}
+
+.problem__quote {
+  @include body-16-24-regular-normal;
+
+  max-width: 238px;
+  color: var(--color-grayscale-100);
+}
+
+.problem__summary {
+  @include body-16-24-regular-normal;
+
+  max-width: 600px;
+  margin-block-start: 24px;
+  color: var(--color-grayscale-50);
+}

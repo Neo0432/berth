@@ -1,2 +1,8 @@
 .root {
+  --_header-height: 72px;
+  display: flex;
+  overflow: hidden;
+  min-height: 100vh;
+  flex-direction: column;
+  padding-top: var(--_header-height);
 }

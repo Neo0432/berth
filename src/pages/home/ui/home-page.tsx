@@ -1,22 +1,28 @@
-import { useTranslations } from 'next-intl';
-
-import { Button } from '@shared/ui';
-
+import { Faq } from './faq/faq';
+import { Features } from './features/features';
+import { FinalCta } from './final-cta/final-cta';
+import { Hero } from './hero/hero';
+import { HowItWorks } from './how-it-works/how-it-works';
+import { KeyBenefit } from './key-benefit/key-benefit';
+import { Problem } from './problem/problem';
+import { Showcases } from './showcases/showcases';
+import { Stats } from './stats/stats';
 import { getClasses } from './styles/get-classes';
 
 export const HomePage = () => {
-  const t = useTranslations('common');
-  const { cnRoot, cnTitle, cnTagline, cnActions } = getClasses();
+  const { cnRoot } = getClasses();
 
   return (
-    <main className={cnRoot}>
-      <h1 className={cnTitle}>{t('app.name')}</h1>
-      <p className={cnTagline}>{t('app.tagline')}</p>
-
-      <div className={cnActions}>
-        <Button>{t('actions.apply')}</Button>
-        <Button variant="secondary">{t('actions.cancel')}</Button>
-      </div>
-    </main>
+    <div className={cnRoot}>
+      <Hero />
+      <Stats />
+      <Problem />
+      <HowItWorks />
+      <Features />
+      <KeyBenefit />
+      <Showcases />
+      <Faq />
+      <FinalCta />
+    </div>
   );
 };

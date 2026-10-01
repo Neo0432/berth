@@ -11,13 +11,13 @@ export const NotFoundPage = () => {
   const { cnRoot, cnTitle, cnDescription } = getClasses();
 
   return (
-    <main className={cnRoot}>
+    <div className={cnRoot}>
       <h1 className={cnTitle}>{t('states.notFound.title')}</h1>
       <p className={cnDescription}>{t('states.notFound.description')}</p>
 
-      <Button as={Link} href={ROUTES.home} variant="secondary">
+      <Button as={Link} href={ROUTES.home} variant="outline">
         {t('actions.goHome')}
       </Button>
-    </main>
+    </div>
   );
 };

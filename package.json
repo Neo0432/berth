@@ -13,8 +13,8 @@
     "stylelint": "stylelint \"**/*.{css,scss,sass}\"",
     "stylelint:fix": " stylelint \"**/*.{css,scss,sass}\" --fix",
     "svg:transform-common": "svgr ./src/shared/assets/icons/svg/common --out-dir ./src/shared/assets/icons/components/common --config-file ./svgr/common.config.js --prettier-config ./.prettierrc.json && eslint ./src/shared/assets/icons/components/common --fix --no-error-on-unmatched-pattern",
-    "svg:transform-external": "svgr ./src/shared/assets/icons/svg/external --out-dir ./src/shared/assets/icons/components/external --config-file ./svgr/external.config.js --prettier-config ./.prettierrc.json && eslint ./src/shared/assets/icons/components/external --fix --no-error-on-unmatched-pattern",
-    "svg:transform": "yarn svg:transform-common && yarn svg:transform-external",
+    "svg:transform-complex": "svgr ./src/shared/assets/icons/svg/complex --out-dir ./src/shared/assets/icons/components/complex --config-file ./svgr/complex.config.js --prettier-config ./.prettierrc.json && eslint ./src/shared/assets/icons/components/complex --fix --no-error-on-unmatched-pattern",
+    "svg:transform": "yarn svg:transform-common && yarn svg:transform-complex",
     "prettier": " prettier \"./**/*.{ts,tsx}\"",
     "prettier:write": " prettier --write \"./**/*.{ts,tsx}\"",
     "test": "jest",
@@ -25,6 +25,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.9.1",
     "@tanstack/react-query": "^5.103.1",
+    "@tanstack/react-table": "^9.2.4",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.23",
     "next": "16.3.6",

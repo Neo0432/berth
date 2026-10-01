@@ -85,7 +85,7 @@ backend.
 | `yarn storybook`              | Storybook on port 6006                             |
 | `yarn build-storybook`        | Static Storybook build                             |
 | `yarn svg:transform-common`   | Regenerate icon components from `icons/svg/common` |
-| `yarn svg:transform-external` | Same for third-party marks                         |
+| `yarn svg:transform-complex`  | Same for multicolour artwork                       |
 
 ---
 
@@ -158,7 +158,7 @@ Source SVGs live in `shared/assets/icons/svg/`. React components are **generated
 
 - `common/` — project icons. Hardcoded colours are replaced with a `color` prop that
   defaults to `currentColor`, so one file works on any background.
-- `external/` — third-party marks. Brand colours are left untouched.
+- `complex/` — multicolour artwork: brand marks and illustrations. Colours are left untouched.
 
 ---
 

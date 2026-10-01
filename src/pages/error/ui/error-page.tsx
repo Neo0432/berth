@@ -11,11 +11,11 @@ export const ErrorPage = () => {
   const { cnRoot, cnTitle, cnDescription } = getClasses();
 
   return (
-    <main className={cnRoot} role="alert">
+    <div className={cnRoot} role="alert">
       <h1 className={cnTitle}>{t('states.error.title')}</h1>
       <p className={cnDescription}>{t('states.error.description')}</p>
 
       <Button onClick={() => window.location.reload()}>{t('actions.retry')}</Button>
-    </main>
+    </div>
   );
 };

@@ -1,0 +1,91 @@
+.final-cta {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 25px 16px;
+
+  @include media-query-min('laptop-s') {
+    padding: 50px 16px;
+  }
+
+  @include media-query-min('laptop-m') {
+    padding-inline: 0;
+  }
+}
+
+.final-cta__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+
+  padding: 24px 16px;
+
+  @include media-query-min('tablet') {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 24px;
+  }
+
+  @include media-query-min('laptop-s') {
+    flex-direction: row;
+    padding: 24px 24px 24px 78px;
+  }
+}
+
+.final-cta__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+
+  @include media-query-min('tablet') {
+    text-align: start;
+  }
+}
+
+.final-cta__title {
+  @include heading-24-32-medium-normal;
+
+  color: var(--color-grayscale-0);
+
+  @include media-query-min('laptop-s') {
+    @include heading-36-44-semibold-normal;
+    white-space: nowrap;
+  }
+}
+
+.final-cta__subtitle {
+  @include body-14-20-regular-normal;
+
+  color: var(--color-grayscale-0);
+
+  @include media-query-min('laptop-s') {
+    @include body-17-25-regular-normal;
+  }
+}
+
+.final-cta__actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  gap: 4px;
+  align-items: center;
+  @include media-query-min('tablet') {
+    flex-direction: column;
+    align-self: flex-end;
+    gap: 8px;
+  }
+
+  @include media-query-min('laptop-s') {
+    flex-direction: row;
+    align-self: flex-end;
+    gap: 8px;
+  }
+}
+
+.final-cta__browse {
+  color: var(--color-grayscale-0);
+}

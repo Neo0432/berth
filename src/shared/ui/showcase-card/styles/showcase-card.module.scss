@@ -1,0 +1,50 @@
+.showcase-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.showcase-card__cover {
+  position: relative;
+
+  overflow: hidden;
+
+  aspect-ratio: 16 / 9;
+  border-radius: 30px;
+
+  background-color: var(--color-grayscale-20);
+}
+
+.showcase-card__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.showcase-card__name {
+  @include heading-20-28-medium-normal;
+
+  color: var(--color-grayscale-100);
+}
+
+.showcase-card__description {
+  @include body-14-20-regular-normal;
+  @include line-clamp(2);
+
+  color: var(--color-grayscale-50);
+}
+
+.showcase-card__completed {
+  @include body-14-20-regular-normal;
+
+  position: absolute;
+  inset-block-start: 15px;
+  inset-inline-end: 15px;
+
+  padding: 6px 16px;
+  border-radius: 999px;
+
+  color: var(--color-grayscale-100);
+  white-space: nowrap;
+
+  background-color: var(--color-grayscale-10);
+}

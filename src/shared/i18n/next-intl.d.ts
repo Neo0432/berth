@@ -1,5 +1,6 @@
 import type common from './locales/en/common.json';
 import type validation from './locales/en/validation.json';
+import type homeLanding from './locales/en/home-landing.json';
 import type { routing } from './routing';
 
 /**
@@ -12,6 +13,7 @@ declare module 'next-intl' {
     Messages: {
       common: typeof common;
       validation: typeof validation;
+      'home-landing': typeof homeLanding;
     };
   }
 }

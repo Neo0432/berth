@@ -8,7 +8,10 @@
     "cancel": "Cancel",
     "save": "Save",
     "retry": "Try again",
-    "goHome": "Go to home"
+    "goHome": "Go to home",
+    "auth": {
+      "login": "Log In"
+    }
   },
   "states": {
     "loading": "Loading…",

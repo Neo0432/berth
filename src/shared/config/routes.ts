@@ -4,9 +4,11 @@
  */
 export const ROUTES = {
   home: '/',
-  feed: '/feed',
+  projects: '/projects',
   project: '/projects/:projectId',
   projectWorkspace: '/projects/:projectId/workspace',
+  showcases: '/showcases',
+  showcase: '/showcases/:showcaseId',
   profile: '/u/:username',
   signIn: '/sign-in',
   signUp: '/sign-up',
@@ -18,6 +20,12 @@ type PathParams<T extends string> = T extends `${string}:${infer Param}/${infer 
   : T extends `${string}:${infer Param}`
     ? Param
     : never;
+
+type StaticRouteKey = {
+  [Key in RouteKey]: PathParams<(typeof ROUTES)[Key]> extends never ? Key : never;
+}[RouteKey];
+
+export type StaticPath = (typeof ROUTES)[StaticRouteKey];
 
 /**
  * Type-safe parameter interpolation:

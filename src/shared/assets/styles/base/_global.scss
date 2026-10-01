@@ -1,5 +1,12 @@
 @use '../mixins/mixins' as *;
 
+// Reserves the page scrollbar's space up front, so the content does not shift
+// sideways when the scrollbar appears or disappears. Set on the root only:
+// tables and other scroll containers keep the default behaviour.
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   isolation: isolate;
 
@@ -23,7 +30,7 @@ body {
 
 :where(a, button, input, textarea, select, [tabindex]) {
   @include focus-visible {
-    box-shadow: var(--focus-main);
+    outline-color: var(--color-primary-30);
   }
 }
 

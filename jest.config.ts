@@ -41,6 +41,8 @@ const ESM_PACKAGES = [
   'use-intl',
   'intl-messageformat',
   '@formatjs',
+  '@tanstack/react-table',
+  '@tanstack/table-core',
 ];
 
 const jestConfig = async (): Promise<Config> => {

@@ -6,6 +6,8 @@ const complexTemplate = ({ componentName, interfaces, jsx }, { tpl }) => {
   const componentNameWithType = `${componentName}: FC<SVGProps<SVGSVGElement>>`;
 
   return tpl`
+    'use client';
+
     import { FC, SVGProps, useId } from 'react';
 
     ${interfaces};

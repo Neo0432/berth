@@ -1,3 +1,4 @@
+'use client';
 import { type FC, type SVGProps, useId } from 'react';
 export const SvgChevronRight: FC<SVGProps<SVGSVGElement>> = ({
   color = 'currentColor',

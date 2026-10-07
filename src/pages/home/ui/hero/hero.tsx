@@ -1,8 +1,8 @@
-import { useTranslations } from 'next-intl';
-import { getClasses } from './styles/get-classes';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 import heroImage from './media/hero-image.webp';
+import { getClasses } from './styles/get-classes';
 
 const HERO_IMAGE_ALT = 'Graph illustrating the cycle process and the benefits of our service';
 
@@ -27,7 +27,6 @@ export const Hero = () => {
         fetchPriority="high"
         loading="eager"
         alt={HERO_IMAGE_ALT}
-        objectFit="cover"
       />
     </section>
   );

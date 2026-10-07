@@ -5,7 +5,7 @@ import { Spinner } from '@shared/ui/spinner';
 
 import { getClasses } from './styles/get-classes';
 
-export const BUTTON_VARIANTS = ['primary', 'outline', 'text'] as const;
+export const BUTTON_VARIANTS = ['primary', 'outline', 'text', 'on-color'] as const;
 export const BUTTON_SIZES = ['m', 's'] as const;
 
 export type ButtonVariant = (typeof BUTTON_VARIANTS)[number];

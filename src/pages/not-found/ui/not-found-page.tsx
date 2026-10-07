@@ -15,7 +15,7 @@ export const NotFoundPage = () => {
       <h1 className={cnTitle}>{t('states.notFound.title')}</h1>
       <p className={cnDescription}>{t('states.notFound.description')}</p>
 
-      <Button as={Link} href={ROUTES.home} variant="outline">
+      <Button as={Link} href={ROUTES.root} variant="outline">
         {t('actions.goHome')}
       </Button>
     </div>

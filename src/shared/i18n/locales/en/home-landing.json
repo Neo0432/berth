@@ -129,7 +129,6 @@
   "finalCta": {
     "title": "Someone Out There Wants<br></br>to Build Your Idea",
     "subtitle": "Post it, open the roles, and find out who.",
-    "postProject": "Post a project",
-    "browse": "or browse what's open"
+    "goProjects": "Go to Your Projects"
   }
 }

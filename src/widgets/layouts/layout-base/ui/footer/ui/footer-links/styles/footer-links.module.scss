@@ -1,0 +1,39 @@
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include media-query-min('tablet') {
+    gap: 32px;
+  }
+
+  @include media-query-min('laptop-s') {
+    flex-direction: row;
+    gap: 120px;
+  }
+}
+
+.footer-links__logo-block {
+  @include body-14-20-regular-normal;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  max-width: 100%;
+
+  color: var(--color-grayscale-30);
+
+  @include media-query-min('tablet') {
+    max-width: 380px;
+  }
+}
+
+.footer-links__groups {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 24px;
+  row-gap: 32px;
+  justify-content: space-between;
+}

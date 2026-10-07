@@ -7,7 +7,7 @@ type HeaderRoute = {
   ariaLabel: string;
 };
 export const headerRoutes: Array<HeaderRoute> = [
-  { label: 'Home', href: ROUTES.home, ariaLabel: 'Home page' },
+  { label: 'Home', href: ROUTES.root, ariaLabel: 'Home page' },
   {
     label: 'Projects',
     href: ROUTES.projects,

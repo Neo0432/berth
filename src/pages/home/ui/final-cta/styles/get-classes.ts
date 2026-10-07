@@ -9,23 +9,26 @@ export const getClasses = () => {
 
   const cnPanel = cn('final-cta__panel');
 
+  const cnContent = cn('final-cta__content');
+
   const cnHeading = cn('final-cta__heading');
 
   const cnTitle = cn('final-cta__title');
 
   const cnSubtitle = cn('final-cta__subtitle');
 
-  const cnActions = cn('final-cta__actions');
+  const cnBrowse = cn('final-cta__browse-button');
 
-  const cnBrowse = cn('final-cta__browse');
+  const cnImage = cn('final-cta__image');
 
   return {
     cnFinalCta,
     cnPanel,
+    cnContent,
     cnHeading,
     cnTitle,
     cnSubtitle,
-    cnActions,
+    cnImage,
     cnBrowse,
   };
 };

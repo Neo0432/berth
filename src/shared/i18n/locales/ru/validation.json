@@ -1,0 +1,8 @@
+{
+  "required": "Обязательное поле",
+  "email": "Введите корректный email",
+  "url": "Введите корректную ссылку",
+  "minLength": "Не меньше {count, plural, one {# символа} other {# символов}}",
+  "maxLength": "Не больше {count, plural, one {# символа} other {# символов}}",
+  "range": "Введите число от {min} до {max}"
+}

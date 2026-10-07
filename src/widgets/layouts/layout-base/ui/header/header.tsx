@@ -1,13 +1,16 @@
 'use client';
 
-import { headerRoutes } from '@entities/header';
-import { Menu } from '@shared/ui/menu/menu';
-import { getClasses } from './styles/get-classes';
-import { usePathname } from 'next/navigation';
-import { Button } from '@shared/ui';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { headerRoutes } from '@entities/header';
+
 import { ROUTES } from '@shared/config';
+import { Button } from '@shared/ui';
 import { Logo } from '@shared/ui/logo/logo';
+import { Menu } from '@shared/ui/menu/menu';
+
+import { getClasses } from './styles/get-classes';
 
 export const Header = () => {
   const { cnRoot, cnContent } = getClasses();
@@ -20,7 +23,7 @@ export const Header = () => {
   return (
     <header className={cnRoot}>
       <div className={cnContent}>
-        <Logo />
+        <Logo variant="dark" />
 
         <Menu>
           {headerRoutes.map((route, index) => (

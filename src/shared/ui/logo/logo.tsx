@@ -1,10 +1,12 @@
-import { SvgLogo } from '@shared/assets/icons/components/complex';
+import Link, { type LinkProps } from 'next/link';
+import type { FC } from 'react';
+
+import { SvgLogoDark, SvgLogoLight } from '@shared/assets/icons/components/complex';
 import { ROUTES } from '@shared/config';
-import Link, { LinkProps } from 'next/link';
-import { FC } from 'react';
 
 interface LogoBaseProps {
   className?: string;
+  variant: 'light' | 'dark';
 }
 
 interface LogoLinkProps extends LogoBaseProps, Pick<LinkProps, 'href'> {
@@ -18,18 +20,20 @@ interface LogoStaticProps extends LogoBaseProps {
 
 export type LogoProps = LogoLinkProps | LogoStaticProps;
 
-export const Logo: FC<LogoProps> = ({ className, isLink = true, href = ROUTES.home }) => {
+export const Logo: FC<LogoProps> = ({ className, variant, isLink = true, href = ROUTES.root }) => {
+  const LogoIcon = variant === 'dark' ? SvgLogoDark : SvgLogoLight;
+
   if (isLink && href) {
     return (
       <Link className={className} href={href}>
-        <SvgLogo />
+        <LogoIcon />
       </Link>
     );
   }
 
   return (
     <span className={className}>
-      <SvgLogo />
+      <LogoIcon />
     </span>
   );
 };

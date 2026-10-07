@@ -1,3 +1,4 @@
+'use client';
 import { type FC, type SVGProps, useId } from 'react';
 export const SvgReviewerIdea: FC<SVGProps<SVGSVGElement>> = props => {
   const id = useId();

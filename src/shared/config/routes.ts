@@ -3,7 +3,7 @@
  * not appear in components: renaming a section would leave them unfindable.
  */
 export const ROUTES = {
-  home: '/',
+  root: '/',
   projects: '/projects',
   project: '/projects/:projectId',
   projectWorkspace: '/projects/:projectId/workspace',
@@ -12,6 +12,9 @@ export const ROUTES = {
   profile: '/u/:username',
   signIn: '/sign-in',
   signUp: '/sign-up',
+  terms: '/terms',
+  privacy: '/privacy',
+  guidelines: '/guidelines',
 } as const;
 
 type RouteKey = keyof typeof ROUTES;

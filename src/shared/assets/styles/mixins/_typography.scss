@@ -154,6 +154,12 @@ $montserrat: var(--font-family-base, 'Montserrat', sans-serif);
   font-family: $montserrat;
 }
 
+@mixin body-16-24-semibold-normal {
+  @include font($size: 16px, $style: normal, $weight: 600, $line-height: 24px);
+
+  font-family: $montserrat;
+}
+
 @mixin body-16-24-medium-normal {
   @include font($size: 16px, $style: normal, $weight: 500, $line-height: 24px);
 

@@ -1,0 +1,15 @@
+@use './breakpoints' as *;
+
+@mixin fields-group-multi($gap: 16px) {
+  display: grid;
+
+  @if $gap {
+    gap: $gap;
+  }
+
+  grid-template-columns: repeat(auto-fit, minmax(var(--field-width, 0fr), 1fr));
+
+  @include media-query-min('tablet') {
+    --field-width: 328.5px;
+  }
+}

@@ -1,10 +1,10 @@
 import js from '@eslint/js';
-import vitest from '@vitest/eslint-plugin';
+import nextPlugin from '@next/eslint-plugin-next';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import boundaries from 'eslint-plugin-boundaries';
+import jest from 'eslint-plugin-jest';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import storybook from 'eslint-plugin-storybook';
 import testingLibrary from 'eslint-plugin-testing-library';
@@ -33,6 +33,12 @@ const layerPolicies = LAYERS.map((layer, index) => {
   };
 });
 
+/** Next route files: thin wrappers that only render FSD pages inside the FSD app shell. */
+const routesPolicy = {
+  from: { element: { type: 'routes' } },
+  allow: { to: { element: { types: { anyOf: ['app', 'pages', 'shared'] } } } },
+};
+
 /** Reaching into another slice past its public API is forbidden. */
 const entryPointPolicy = {
   disallow: {
@@ -43,7 +49,7 @@ const entryPointPolicy = {
 };
 
 export default defineConfig([
-  globalIgnores(['dist', 'coverage', 'storybook-static', 'node_modules', 'public/mockServiceWorker.js']),
+  globalIgnores(['.next', 'coverage', 'storybook-static', 'node_modules', 'next-env.d.ts', 'public/mockServiceWorker.js']),
 
   // ───────────────────────── Base for every TS/TSX file ─────────────────────────
   {
@@ -126,44 +132,48 @@ export default defineConfig([
 
   // ───────────────────────── FSD layer boundaries ─────────────────────────
   {
-    files: ['src/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}', 'app/**/*.{ts,tsx}'],
     plugins: { boundaries },
     settings: {
-      'boundaries/include': ['src/**/*'],
+      'boundaries/include': ['src/**/*', 'app/**/*'],
       // The pattern describes the element ROOT; everything inside belongs to it.
       // A pattern like 'src/pages/*/**/*' matches no element at all, and the
       // rule then silently lets every violation through.
+      //
+      // partialMatch: false anchors every pattern to the project root. The
+      // default matches path suffixes, so 'app' would also claim src/app and
+      // the FSD app layer would be misread as the Next router.
       'boundaries/elements': [
-        { type: 'app', pattern: 'src/app' },
-        { type: 'pages', pattern: 'src/pages/*', capture: ['slice'] },
-        { type: 'widgets', pattern: 'src/widgets/*', capture: ['slice'] },
-        { type: 'features', pattern: 'src/features/*', capture: ['slice'] },
-        { type: 'entities', pattern: 'src/entities/*', capture: ['slice'] },
-        { type: 'shared', pattern: 'src/shared' },
+        { type: 'routes', pattern: 'app', partialMatch: false },
+        { type: 'app', pattern: 'src/app', partialMatch: false },
+        { type: 'pages', pattern: 'src/pages/*', capture: ['slice'], partialMatch: false },
+        { type: 'widgets', pattern: 'src/widgets/*', capture: ['slice'], partialMatch: false },
+        { type: 'features', pattern: 'src/features/*', capture: ['slice'], partialMatch: false },
+        { type: 'entities', pattern: 'src/entities/*', capture: ['slice'], partialMatch: false },
+        { type: 'shared', pattern: 'src/shared', partialMatch: false },
       ],
       'import/resolver': {
         typescript: { project: './tsconfig.json' },
       },
     },
     rules: {
-      'boundaries/dependencies': ['error', { default: 'disallow', policies: [...layerPolicies, entryPointPolicy] }],
+      'boundaries/dependencies': ['error', { default: 'disallow', policies: [...layerPolicies, routesPolicy, entryPointPolicy] }],
     },
   },
 
-  // ───────────────────────── Application entry points ─────────────────────────
+  // ───────────────────────── Next.js ─────────────────────────
   {
-    files: ['src/app/**/*.{ts,tsx}', 'src/**/*.stories.tsx'],
-    extends: [reactRefresh.configs.vite],
+    files: ['**/*.{ts,tsx}'],
+    extends: [nextPlugin.configs['core-web-vitals']],
   },
 
   // ───────────────────────── Tests ─────────────────────────
   {
     files: ['src/**/*.{test,spec}.{ts,tsx}', 'src/shared/test/**/*.{ts,tsx}'],
-    extends: [vitest.configs.recommended, testingLibrary.configs['flat/react']],
+    extends: [jest.configs['flat/recommended'], testingLibrary.configs['flat/react']],
     rules: {
       '@typescript-eslint/no-non-null-assertion': 'off',
-      'vitest/expect-expect': 'error',
-      'vitest/no-focused-tests': 'error',
+      'jest/no-focused-tests': 'error',
     },
   },
 

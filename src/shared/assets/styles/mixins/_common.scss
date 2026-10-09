@@ -1,0 +1,94 @@
+/* stylelint-disable value-no-vendor-prefix */
+
+@mixin focus-visible {
+  &:focus-visible {
+    @content;
+  }
+
+  @supports not selector(:focus-visible) {
+    &:focus {
+      @content;
+    }
+  }
+}
+
+@keyframes skeleton-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+@keyframes rotate-animation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// TODO: decide whether this mixin is still needed at all.
+// It used to carry a Firefox-only workaround built on `@-moz-document`, which is
+// dead: the at-rule was never standardised and Firefox dropped support in v59.
+// What is left is a one-line wrapper around `filter: blur()`.
+@mixin filter-blur($blur-size) {
+  filter: blur($blur-size);
+}
+
+@mixin aspect-ratio($width, $height) {
+  &::before {
+    content: '';
+    float: left;
+    padding-top: calc(($height / $width) * 100%);
+  }
+
+  &::after {
+    content: ' ';
+    clear: left;
+    display: table;
+  }
+
+  // @supports (aspect-ratio) {
+  //   aspect-ratio: $width / $height;
+  // }
+}
+
+@mixin line-clamp($max-lines) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $max-lines;
+
+  overflow-wrap: break-word;
+}
+
+@mixin truncate-text($max-lines, $line-height, $max-width) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $max-lines;
+
+  width: $max-width;
+  max-height: $line-height * $max-lines;
+
+  text-overflow: ellipsis;
+  white-space: initial;
+
+  @supports (width: fit-content) {
+    width: fit-content;
+    max-width: $max-width;
+  }
+}
+
+@mixin visually-hidden {
+  position: absolute;
+
+  overflow: hidden;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+}

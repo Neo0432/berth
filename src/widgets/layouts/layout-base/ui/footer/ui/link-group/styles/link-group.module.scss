@@ -1,0 +1,47 @@
+.link-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+
+  @include media-query-min('tablet') {
+    gap: 16px;
+    max-width: 200px;
+  }
+}
+
+.link-group__title {
+  @include caption-12-16-medium-normal;
+
+  color: var(--color-grayscale-30);
+  text-transform: uppercase;
+}
+
+.link-group__links {
+  display: grid;
+  grid-template-columns: auto;
+
+  @include media-query-min('tablet') {
+    gap: 16px;
+  }
+}
+
+.link-group__link {
+  @include body-16-24-medium-normal;
+
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  padding-block: 10px;
+
+  color: var(--color-grayscale-0);
+
+  @include media-query-min('tablet') {
+    justify-content: start;
+    width: fit-content;
+    padding: 0;
+  }
+}

@@ -1,0 +1,16 @@
+.locale-switcher {
+  width: fit-content;
+}
+
+// Block-level flex: an inline-flex box sits on the text baseline and adds a few pixels below it.
+.locale-switcher__value {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.locale-switcher__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}

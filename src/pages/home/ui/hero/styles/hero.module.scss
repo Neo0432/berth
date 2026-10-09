@@ -1,0 +1,81 @@
+.hero {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 95px 16px 25px;
+  margin-inline: auto;
+
+  width: 100%;
+
+  @include media-query-min('laptop-s') {
+    grid-template-columns: auto 510px;
+    padding: 95px 16px 50px;
+    width: fit-content;
+  }
+}
+
+.hero__text-area {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero__title {
+  @include heading-32-40-bold-normal;
+  color: var(--color-grayscale-100);
+  text-align: center;
+
+  @include media-query-min('tablet') {
+    @include heading-40-48-bold-normal;
+  }
+
+  @include media-query-min('laptop-s') {
+    text-align: unset;
+    max-width: 549px;
+  }
+}
+
+.hero__title-highlited {
+  position: relative;
+
+  display: inline-flex;
+  text-wrap: nowrap;
+
+  color: var(--color-primary-60);
+  margin-left: 6px;
+
+  &::after {
+    content: '';
+    position: absolute;
+
+    top: 2px;
+    bottom: 2px;
+    left: -10px;
+    right: -10px;
+
+    border: 2px solid var(--color-primary-20);
+    background-color: rgb(240, 116, 29, 0.11);
+    border-radius: 8px;
+  }
+}
+
+.hero__subtitle {
+  @include body-16-24-medium-normal;
+  color: var(--color-grayscale-50);
+
+  text-align: center;
+
+  @include media-query-min('laptop-s') {
+    text-align: unset;
+    max-width: 500px;
+  }
+}
+
+.hero__image {
+  width: 510px;
+  height: 332px;
+  object-fit: contain;
+
+  margin: auto;
+}

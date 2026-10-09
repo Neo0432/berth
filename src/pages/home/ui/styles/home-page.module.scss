@@ -1,34 +1,5 @@
 .home {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  gap: var(--space-4);
-  align-items: center;
-  justify-content: center;
-
-  padding: var(--space-12) var(--layout-gutter);
-
-  text-align: center;
-}
-
-.home__title {
-  @include heading-32;
-
-  @include from('tablet') {
-    @include heading-40;
-  }
-}
-
-.home__tagline {
-  max-inline-size: 52ch;
-  color: var(--color-text-secondary);
-}
-
-.home__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-3);
-  justify-content: center;
-
-  margin-block-start: var(--space-4);
+  flex: 1;
 }

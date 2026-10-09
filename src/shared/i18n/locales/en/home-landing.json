@@ -1,0 +1,134 @@
+{
+  "pageTitle": {
+    "text": "Build Bigger Side Projects with a",
+    "highlited": "Real Team",
+    "subtitle": "Post what you're building, open the roles you're missing,<br></br>and ship it with people who signed up for the same deadline."
+  },
+  "stats": {
+    "title": "Right now on Berth",
+    "subtitle": "Post it, open the roles, and find out who.",
+    "items": {
+      "openRoles": "Open Roles",
+      "projectsRecruiting": "Projects Recruiting",
+      "cyclesShipped": "Cycles Shipped"
+    }
+  },
+  "problem": {
+    "tag": "The problem",
+    "title": "Solo Projects Die<br></br>for Predictable Reasons",
+    "quotes": {
+      "backend": "“I wrote the backend. The UI is still three unstyled forms.”",
+      "idea": "“I know what to build. I don't know what to build first.”",
+      "alone": "“We started with four people. By week three, I was alone again.”"
+    },
+    "summary": "At work you own one layer and specialists cover the rest. On a side project, you're all of them at once. That's why the ambitious ones never ship."
+  },
+  "howItWorks": {
+    "tag": "How it works",
+    "title": "From Idea<br></br>to Shipped in One Cycle",
+    "steps": {
+      "define": {
+        "title": "Define the build",
+        "description": "Describe what you're making, what's in scope, and how long the cycle runs. Two to twelve weeks. Fixed from day one."
+      },
+      "roles": {
+        "title": "Open your roles",
+        "description": "Missing a designer? A backend dev? Open a slot for each one, with the skills and the weekly hours you expect."
+      },
+      "team": {
+        "title": "Pick your team",
+        "description": "People apply to a specific slot and tell you why they want in. You read, you choose. No algorithm decides for you."
+      },
+      "ship": {
+        "title": "Ship and log it",
+        "description": "Work the cycle, close it out, and every member walks away with the project in their profile — role, dates, outcome."
+      }
+    }
+  },
+  "features": {
+    "tag": "Features",
+    "title": "Built for Teams That<br></br>Only Exist for a While",
+    "cards": {
+      "scope": {
+        "title": "Scope That Can't<br></br>Quietly Grow",
+        "description": "The scope is public before anyone joins. If you change it mid-cycle, everyone gets notified and gets a week to walk away without a mark on their profile. Ambition stays honest."
+      },
+      "roles": {
+        "title": "Roles, Not Vague<br></br>Invitations",
+        "description": "Every open seat names the skills, the direction, and the hours. Applicants know what they're signing up for, and you know what you're choosing between."
+      },
+      "deadline": {
+        "title": "A Deadline That Actually Lands",
+        "description": "Projects without an end date don't fail — they fade. Every Berth project runs a fixed cycle and closes with a real outcome: shipped, partly shipped, or abandoned. All three go in your profile, because the honest record is worth more than a graveyard of \"in progress.\""
+      }
+    }
+  },
+  "keyBenefit": {
+    "tag": "Key benefit",
+    "title": "Goodbye Solo Burnout.<br></br>Hello Shipped Work.",
+    "subtitle": "Most people are both. Post one project, join another — nothing in Berth asks you to pick a side.",
+    "table": {
+      "author": "If you have an idea",
+      "member": "If you're looking for one",
+      "rows": {
+        "roles": {
+          "author": "Get the roles you can't cover yourself",
+          "member": "Join a project that's already scoped"
+        },
+        "team": {
+          "author": "Choose your team from real applications",
+          "member": "Work with a team instead of a tutorial"
+        },
+        "scope": {
+          "author": "Keep the scope locked and visible",
+          "member": "Know the hours and the deadline upfront"
+        },
+        "result": {
+          "author": "Close the cycle with a real result",
+          "member": "Walk away with proof you shipped"
+        }
+      }
+    }
+  },
+  "showcases": {
+    "tag": "Showcase",
+    "title": "Cycles That Actually Closed",
+    "subtitle": "Every project here ran a fixed cycle with a real team. No mockups, no demos.",
+    "viewAll": "View all shipped projects",
+    "completedOn": "Completed on {date}"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": {
+      "free": {
+        "question": "Is Berth free?",
+        "answer": "Yes, completely. No paid tiers, no limits on projects or applications."
+      },
+      "equity": {
+        "question": "Do I give up equity or sign anything?",
+        "answer": "No. Berth has no contracts, no equity splits, and no ownership claims. It's a place to find people and run a cycle — the rest is between you and your team."
+      },
+      "code": {
+        "question": "Who owns the code we write?",
+        "answer": "You and your team do. Berth never touches your repository. Pick a license before the cycle starts and you'll save yourself an awkward conversation later."
+      },
+      "unfinished": {
+        "question": "What if the project doesn't finish?",
+        "answer": "It still counts. Cycles close as shipped, partly shipped, or abandoned, and your profile records what you actually did. An unfinished project with a real team beats another half-read tutorial."
+      },
+      "github": {
+        "question": "Do I need a GitHub account?",
+        "answer": "No. Sign up with an email and a password. You can link GitHub or GitLab later if you want it on your profile."
+      },
+      "concurrent": {
+        "question": "Can I join a project and run my own at the same time?",
+        "answer": "Yes. Up to three projects as an author and five as a member."
+      }
+    }
+  },
+  "finalCta": {
+    "title": "Someone Out There Wants<br></br>to Build Your Idea",
+    "subtitle": "Post it, open the roles, and find out who.",
+    "goProjects": "Go to Your Projects"
+  }
+}

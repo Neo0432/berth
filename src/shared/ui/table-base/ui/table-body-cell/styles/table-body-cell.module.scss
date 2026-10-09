@@ -1,0 +1,31 @@
+.table-body-cell {
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--color-grayscale-30);
+
+  color: var(--color-grayscale-100);
+  text-align: start;
+  overflow-wrap: anywhere;
+
+  &--s {
+    @include body-14-20-regular-normal;
+  }
+
+  &--m {
+    @include body-17-25-regular-normal;
+  }
+
+  &--numeric {
+    text-align: end;
+  }
+
+  &--no-hyphens {
+    white-space: nowrap;
+  }
+
+  &--action {
+    position: sticky;
+    z-index: var(--index-sticky);
+    inset-inline-end: 0;
+    background-color: var(--color-grayscale-10);
+  }
+}

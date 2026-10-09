@@ -1,2 +1,10 @@
+export { SvgAlertCircle } from './alert-circle';
+export { SvgArrowRight } from './arrow-right';
+export { SvgCheck } from './check';
+export { SvgChevronDown } from './chevron-down';
+export { SvgChevronRight } from './chevron-right';
+export { SvgChevronUp } from './chevron-up';
 export { SvgClose } from './close';
+export { SvgGlobe } from './globe';
+export { SvgMailEnvelope } from './mail-envelope';
 export { SvgPlus } from './plus';

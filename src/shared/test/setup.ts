@@ -1,6 +1,4 @@
-import '@testing-library/jest-dom/vitest';
-
-import { afterAll, afterEach, beforeAll, vi } from 'vitest';
+import '@testing-library/jest-dom';
 
 import { server } from './msw/server';
 
@@ -11,12 +9,20 @@ beforeAll(() => {
 
 afterEach(() => {
   server.resetHandlers();
-  vi.clearAllMocks();
+  jest.clearAllMocks();
 });
 
 afterAll(() => {
   server.close();
 });
+
+// jsdom has no ResizeObserver, and no layout for it to report on anyway —
+// without this stub every table fails to render in tests.
+global.ResizeObserver = class {
+  observe = jest.fn();
+  unobserve = jest.fn();
+  disconnect = jest.fn();
+};
 
 // jsdom has no matchMedia — without this stub anything using media queries breaks.
 Object.defineProperty(window, 'matchMedia', {
@@ -25,8 +31,8 @@ Object.defineProperty(window, 'matchMedia', {
     matches: false,
     media: query,
     onchange: null,
-    addEventListener: vi.fn(),
-    removeEventListener: vi.fn(),
-    dispatchEvent: vi.fn(),
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    dispatchEvent: jest.fn(),
   }),
 });

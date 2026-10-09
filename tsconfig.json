@@ -19,7 +19,6 @@
     "esModuleInterop": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
     "noEmit": true,
 
     /* Strictness */
@@ -29,12 +28,17 @@
     "noImplicitReturns": true,
     "noUnusedParameters": true,
     "forceConsistentCasingInFileNames": true,
-    // icon components in shared/assets/icons/components need.
+    // Unused locals are policed by @typescript-eslint/no-unused-vars instead: unlike
+    // tsc it can be switched off per folder, which the generated icon components
+    // in shared/assets/icons/components need.
     "noUnusedLocals": false,
 
     "skipLibCheck": true,
-    "types": ["node", "vite/client", "vite-plugin-svgr/client", "@testing-library/jest-dom"],
+    "types": ["node", "jest", "@testing-library/jest-dom"],
+    "plugins": [{ "name": "next" }],
 
+    // No baseUrl: it is deprecated in TS 6, and since TS 5.0 paths resolve
+    // relative to the tsconfig itself. Mirrored in jest.config.ts moduleNameMapper.
     "paths": {
       "@app/*": ["./src/app/*"],
       "@pages/*": ["./src/pages/*"],
@@ -44,6 +48,15 @@
       "@shared/*": ["./src/shared/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules", "dist", "coverage", "storybook-static"]
+  // `**/*.ts` covers every .d.ts but skips dot-folders, so .storybook and the route
+  // types Next generates in .next/types are listed explicitly.
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".storybook/**/*.ts",
+    ".storybook/**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": ["node_modules", "coverage", "storybook-static"]
 }

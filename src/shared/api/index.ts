@@ -1,3 +1,4 @@
 export { apiClient, type QueryParams, type RequestOptions } from './api-client';
 export { ApiError, isApiError } from './api-error';
-export { createQueryClient } from './query-client';
+export { createQueryClient, getQueryClient } from './query-client';
+export type { ShowcaseDto } from './types/showcase';

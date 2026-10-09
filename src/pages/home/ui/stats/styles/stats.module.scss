@@ -1,0 +1,104 @@
+.stats {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 25px 16px;
+
+
+  @include media-query-min('laptop-s') {
+    padding: 50px 16px;
+  }
+
+  @include media-query-min('laptop-m') {
+    padding-inline: 0;
+  }
+}
+
+.stats__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px 16px;
+
+  @include media-query-min('tablet') {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+  }
+
+  @include media-query-min('laptop-s') {
+    padding: 24px 24px 24px 78px;
+  }
+}
+
+.stats__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  text-align: center;
+
+  @include media-query-min('tablet') {
+    text-align: start;
+  }
+}
+
+.stats__title {
+  @include heading-24-32-medium-normal;
+
+  color: var(--color-grayscale-0);
+
+  @include media-query-min('tablet') {
+    text-align: start;
+  }
+
+  @include media-query-min('laptop-s') {
+    @include heading-32-40-semibold-normal;
+  }
+}
+
+.stats__subtitle {
+  @include body-14-20-regular-normal;
+
+  color: var(--color-grayscale-0);
+
+  @include media-query-min('laptop-s') {
+    @include body-17-25-regular-normal;
+  }
+}
+
+.stats__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+
+  @include media-query-min('laptop-s') {
+    grid-template-columns: repeat(3, 116px);
+    column-gap: 64px;
+  }
+}
+
+.stats__item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.stats__value {
+  width: 100%;
+  height: 92px;
+  border-radius: 18px;
+  background-color: var(--color-grayscale-10);
+}
+
+.stats__label {
+  @include body-14-20-medium-normal;
+
+  color: var(--color-grayscale-0);
+  text-align: center;
+
+  @include media-query-min('laptop-s') {
+    white-space: nowrap;
+  }
+}

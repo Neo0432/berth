@@ -1,0 +1,29 @@
+// On mobile the language switcher sits above the legal text, from tablet up to its right.
+.footer-legal {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 24px;
+  align-items: flex-start;
+
+  width: 100%;
+
+  @include media-query-min('tablet') {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.footer-legal__legal-info {
+  @include caption-12-16-medium-normal;
+
+  color: var(--color-grayscale-30);
+
+  @include media-query-min('tablet') {
+    max-width: 62%;
+  }
+
+  & p:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}

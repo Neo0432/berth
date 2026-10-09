@@ -3,14 +3,18 @@
  * not appear in components: renaming a section would leave them unfindable.
  */
 export const ROUTES = {
-  home: '/',
-  feed: '/feed',
+  root: '/',
+  projects: '/projects',
   project: '/projects/:projectId',
   projectWorkspace: '/projects/:projectId/workspace',
+  showcases: '/showcases',
+  showcase: '/showcases/:showcaseId',
   profile: '/u/:username',
   signIn: '/sign-in',
   signUp: '/sign-up',
-  notFound: '*',
+  terms: '/terms',
+  privacy: '/privacy',
+  guidelines: '/guidelines',
 } as const;
 
 type RouteKey = keyof typeof ROUTES;
@@ -19,6 +23,12 @@ type PathParams<T extends string> = T extends `${string}:${infer Param}/${infer 
   : T extends `${string}:${infer Param}`
     ? Param
     : never;
+
+type StaticRouteKey = {
+  [Key in RouteKey]: PathParams<(typeof ROUTES)[Key]> extends never ? Key : never;
+}[RouteKey];
+
+export type StaticPath = (typeof ROUTES)[StaticRouteKey];
 
 /**
  * Type-safe parameter interpolation:

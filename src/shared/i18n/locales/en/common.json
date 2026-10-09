@@ -8,11 +8,40 @@
     "cancel": "Cancel",
     "save": "Save",
     "retry": "Try again",
-    "goHome": "Go to home"
+    "goHome": "Go to home",
+    "auth": {
+      "login": "Log In"
+    }
+  },
+  "localeSwitcher": {
+    "label": "Language"
+  },
+  "footer": {
+    "tagline": "Temporary teams for side projects. Fixed scope, a real deadline, and a record of what you shipped.",
+    "noStrings": "No equity, no contracts, no fees.",
+    "copyright": "© {year} Berth",
+    "disclaimer": "Berth isn't a party to agreements between members, doesn't guarantee results, and doesn't decide who owns the code you build.",
+    "groups": {
+      "product": "Product",
+      "legal": "Legal",
+      "help": "Help"
+    },
+    "links": {
+      "home": "Home",
+      "projects": "Projects",
+      "showcases": "Showcases",
+      "howItWorks": "How It Works",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy",
+      "guidelines": "Community Guidelines",
+      "contactSupport": "Contact Support",
+      "reportBug": "Report a Bug"
+    }
   },
   "states": {
     "loading": "Loading…",
     "empty": "Nothing here yet",
+    "noResults": "No results found",
     "error": {
       "title": "Something went wrong",
       "description": "The page crashed. Reloading usually helps."

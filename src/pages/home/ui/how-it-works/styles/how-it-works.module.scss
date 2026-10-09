@@ -1,0 +1,79 @@
+.how-it-works {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: 25px 16px;
+
+  @include media-query-min('laptop-s') {
+    padding: 50px 28px;
+  }
+}
+
+.how-it-works__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include media-query-min('laptop-s') {
+    gap: 56px;
+  }
+}
+
+.how-it-works__step {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: start;
+
+  @include media-query-min('laptop-s') {
+    gap: 64px;
+    align-items: center;
+
+    &:nth-child(odd) {
+      margin-inline-start: 46px;
+    }
+
+    &:nth-child(even) {
+      align-self: flex-end;
+    }
+  }
+}
+
+.how-it-works__number {
+  @include heading-40-48-semibold-normal;
+
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary-70);
+
+  @include media-query-min('laptop-s') {
+    @include heading-64-80-semibold-normal;
+  }
+}
+
+.how-it-works__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  @include media-query-min('laptop-s') {
+    max-width: 648px;
+    gap: 8px;
+  }
+}
+
+.how-it-works__title {
+  @include heading-20-28-semibold-normal;
+
+  color: var(--color-grayscale-100);
+}
+
+.how-it-works__description {
+  @include body-16-24-medium-normal;
+
+  color: var(--color-grayscale-50);
+}

@@ -13,6 +13,7 @@ dayjs.extend(relativeTime);
 
 export const DATE_FORMATS = {
   date: 'DD.MM.YYYY',
+  isoDate: 'YYYY-MM-DD',
   dateLong: 'D MMMM YYYY',
   dateTime: 'DD.MM.YYYY HH:mm',
   monthYear: 'MMMM YYYY',

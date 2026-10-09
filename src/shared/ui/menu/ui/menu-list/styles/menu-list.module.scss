@@ -1,0 +1,18 @@
+.menu-list {
+  display: flex;
+  z-index: var(--index-dropdown);
+  padding: 0;
+  border-radius: 24px;
+  background: var(--color-grayscale-10);
+  box-shadow: var(--shadow-dropdown);
+
+  min-width: 300px;
+  max-width: 560px;
+
+  justify-self: center;
+}
+
+.menu-list-items {
+  display: flex;
+  gap: 32px;
+}

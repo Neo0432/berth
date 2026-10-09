@@ -28,6 +28,7 @@ export default {
     '#141821': '{color}',
     '#6B7488': '{color}',
     '#97A0B2': '{color}',
+    '#2B2B2B': '{color}',
   },
   plugins: ['@svgr/plugin-svgo', '@svgr/plugin-jsx'],
   jsx: {

@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 
 import { Button } from './button';
 
@@ -22,11 +22,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {};
 
-export const Secondary: Story = { args: { variant: 'secondary' } };
-
-export const Ghost: Story = { args: { variant: 'ghost' } };
-
-export const Danger: Story = { args: { variant: 'danger' } };
+export const Outline: Story = { args: { variant: 'outline' } };
 
 export const Loading: Story = { args: { isLoading: true } };
 
